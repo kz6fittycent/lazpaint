@@ -9,8 +9,17 @@ base: core20
 grade: stable
 icon: "resources/icon/64x64.png"
 license: NLPL
+compression: lzo
+
+assumes:
+  - command-chain
 
 parts:
+  homeishome-launch:
+    plugin: nil
+    stage-snaps:
+      - homeishome-launch   
+      
   lazarus:
     plugin: nil
     source: .
@@ -142,6 +151,7 @@ apps:
     command: usr/bin/lazpaint
     command-chain:
     - bin/desktop-launch
+    - bin/homeishome-launch 
     desktop: usr/share/applications/lazpaint.desktop    
     plugs:
     - desktop

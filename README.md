@@ -10,6 +10,11 @@ This application can be made [portable](https://wiki.freepascal.org/LazPaint_Mak
 
 Here are [compilation instructions](https://wiki.freepascal.org/LazPaint#Compilation_of_latest_version) if you would like to debug or make a modified version.
 
+# Install the snap
+[![LazPaint](https://snapcraft.io/lazpaint/badge.svg)](https://snapcraft.io/lazpaint)
+
+`sudo snap install lazpaint`
+
 # Official Sites
 [LazPaint Wiki](http://wiki.freepascal.org/LazPaint)
 

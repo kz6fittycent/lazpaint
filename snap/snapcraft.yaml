@@ -19,7 +19,14 @@ parts:
     plugin: nil
     stage-snaps:
       - homeishome-launch   
-      
+  
+  bgrabitmap:
+    source: https://github.com/bgrabitmap/bgrabitmap
+    source-type: git
+    plugin: make
+    make-parameters:
+      - PREFIX=/usr/share
+    
   lazarus:
     plugin: nil
     source: .
@@ -33,6 +40,7 @@ parts:
       wget -nc https://netix.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.12/fpc-src_3.2.0-1_amd64.deb
       apt install ./lazarus-project_2.0.12-0_amd64.deb ./fpc-laz_3.2.0-1_amd64.deb ./fpc-src_3.2.0-1_amd64.deb
     prime: [-*]
+    
   lazpaint:
     plugin: nil
     source: .
@@ -56,11 +64,13 @@ parts:
     after:
     - lazarus
     - desktop-gtk2
+    - bgrabitmap
     stage:
     - etc
     - usr
     - usr/bin
     - usr/share/lazpaint
+    - usr/share/bgrabitmap
     - usr/share/applications/lazpaint.desktop
     - usr/share/pixmaps
     stage-packages:

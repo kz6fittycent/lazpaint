@@ -27,8 +27,15 @@ parts:
     plugin: make
     make-parameters:
       - PREFIX=/usr/share
-    build-packages:
+    after:
       - lazarus
+      
+  lazarus:
+    source: https://git.code.sf.net/p/lazarus/laz.git  
+    source-type: git
+    plugin: make
+    make-parameters:
+      - PREFIX=/usr
       
   bgracontrols:
     source: https://github.com/bgrabitmap/bgracontrols/
@@ -36,7 +43,7 @@ parts:
     plugin: make
     make-parameters:
       - PREFIX=/usr/share
-    build-packages:
+    after:
       - lazarus      
 
   lazpaint:
@@ -63,6 +70,7 @@ parts:
     - desktop-gtk2
     - bgrabitmap
     - bgracontrols
+    - lazarus
     stage:
     - etc
     - usr
@@ -73,7 +81,6 @@ parts:
     - usr/share/applications/lazpaint.desktop
     - usr/share/pixmaps
     build-packages:
-    - lazarus
     - fpc
     
     stage-packages:
@@ -108,8 +115,7 @@ parts:
     - libxinerama1
     - libxrandr2
     - libxrender1
-    - lazarus
-
+    
   desktop-gtk2:
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
     source-subdir: gtk

@@ -4,6 +4,7 @@ version: '7.1.6'
 summary: Image editor with raster and vector layers.
 description: |
   Can read layered files (lzp, ora, pdn, oXo, flat psd), multi-images (gif, ico, tiff), flat files (bmp, jpeg, pcx, png, tga, webp, xpm, xwd), raw images (dng, cr2, nef, arw...), vectorial (svg), 3D (obj). Has drawing tools, vector shapes, phong shading, curve adjustments, filters, render some textures, Python scripting. Uses Qt5 widgetset.
+
 confinement: strict
 base: core20
 grade: stable
@@ -28,21 +29,7 @@ parts:
       - PREFIX=/usr/share
     build-packages:
       - lazarus
-      
-  lazarus:
-    plugin: nil
-    source: .
-    source-type: local
-    build-packages: 
-    - wget
-    - libgtk2.0-dev
-    override-build: |
-      wget -nc https://deac-ams.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.12/lazarus-project_2.0.12-0_amd64.deb
-      wget -nc https://netix.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.12/fpc-laz_3.2.0-1_amd64.deb
-      wget -nc https://netix.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.12/fpc-src_3.2.0-1_amd64.deb
-      apt install ./lazarus-project_2.0.12-0_amd64.deb ./fpc-laz_3.2.0-1_amd64.deb ./fpc-src_3.2.0-1_amd64.deb
-    prime: [-*]
-    
+
   lazpaint:
     plugin: nil
     source: .
@@ -64,7 +51,6 @@ parts:
       install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/mime/packages
       install -m 755 ../Install/snap/local/lazpaint.xml $SNAPCRAFT_PART_INSTALL/usr/share/mime/packages
     after:
-    - lazarus
     - desktop-gtk2
     - bgrabitmap
     stage:
@@ -75,6 +61,9 @@ parts:
     - usr/share/bgrabitmap
     - usr/share/applications/lazpaint.desktop
     - usr/share/pixmaps
+    build-packages:
+    - lazarus
+    
     stage-packages:
     - libatk1.0-0
     - libcairo2
@@ -107,6 +96,7 @@ parts:
     - libxinerama1
     - libxrandr2
     - libxrender1
+    - lazarus
 
   desktop-gtk2:
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git

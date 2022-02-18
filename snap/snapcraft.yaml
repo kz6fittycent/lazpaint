@@ -74,6 +74,7 @@ parts:
     - usr/share/pixmaps
     build-packages:
     - lazarus
+    - fpc
     
     stage-packages:
     - libatk1.0-0

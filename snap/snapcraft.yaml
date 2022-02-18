@@ -29,6 +29,15 @@ parts:
       - PREFIX=/usr/share
     build-packages:
       - lazarus
+      
+  bgracontrols:
+    source: https://github.com/bgrabitmap/bgracontrols/
+    source-type: git
+    plugin: make
+    make-parameters:
+      - PREFIX=/usr/share
+    build-packages:
+      - lazarus      
 
   lazpaint:
     plugin: nil
@@ -53,12 +62,14 @@ parts:
     after:
     - desktop-gtk2
     - bgrabitmap
+    - bgracontrols
     stage:
     - etc
     - usr
     - usr/bin
     - usr/share/lazpaint
     - usr/share/bgrabitmap
+    - usr/share/bgracontrols
     - usr/share/applications/lazpaint.desktop
     - usr/share/pixmaps
     build-packages:
